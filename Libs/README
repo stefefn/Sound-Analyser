@@ -3,3 +3,31 @@ In this folder you should put a symbolic link to your JUCE folder
 To create the JUCE sym link:
 - change into this /Libs folder (cd <path to libs>)
 - create a sym link to your JUCE folder (ln -s <path to JUCE folder>)
+
+
+Windows / Visual Studio 2022 / JUCE v7.0.3:
+
+jucer: Add VS 2022 and enable VST3 target.
+
+In project "Sound Analyser_VST3"
+
+- add preprocessor directives:
+JUCE_VST3_CAN_REPLACE_VST2=0
+
+- replace "alpha3" with "4" in resources.rc
+
+In project "Sound Analyser_SharedCode"
+
+- add include directories:
+..\..\Libs\kiss_fft130
+..\..\Libs\Gist\src
+
+- add preprocessor directives:
+USE_KISS_FFT
+JUCE_MODAL_LOOPS_PERMITTED=1
+
+- delete Libs/Gist/src/fft/AccelerateFFT.cpp from "fft" filter folder
+- delete Libs/Gist/src/fft/AccelerateFFT.h from "fft" filter folder
+
+In project "Sound Analyser_StandalonePlugin"
+- replace "alpha3" with "4" in resources.rc

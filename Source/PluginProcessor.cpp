@@ -167,7 +167,7 @@ void SoundAnalyserAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiB
     {
         float* channelData = buffer.getWritePointer (channel);
         
-#warning analysis on the left channel only?
+//#warning analysis on the left channel only?
         if (channel == 0)
             analyser.analyseAudio (channelData, buffer.getNumSamples());
     }
